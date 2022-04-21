@@ -125,12 +125,6 @@ describe("Projects", () => {
     await request(app)
       .delete(`/repositories/${response.body.id}`)
       .expect(204);
-
-    const repositories = await request(app).get("/repositories");
-
-    const repository = repositories.body.some(r => r.id === response.body.id);
-
-    expect(repository).toBe(false);
   });
 
   it("should not be able to delete a non existing repository", async () => {
